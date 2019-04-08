@@ -1,0 +1,79 @@
+@import '~@angular/material/theming';
+
+:host{
+  font-family: 'Open Sans', 'Tahoma', 'Verdana', sans-serif;
+}
+
+.search{
+	font-size: 36px;
+	font-weight: 300;
+	border-color: white;
+	font-family: 'Open Sans', 'Tahoma', 'Verdana', sans-serif;
+	margin: 40px 10% 0 10%;
+	width: 80%;
+}
+
+img {
+	vertical-align: top;
+	margin: 10px;
+}
+mat-card {
+	margin: 40px 100px;
+}
+.colorPreview {
+	width: 20px;
+	height: 20px;
+	display: inline-block;
+	margin: 0 10px;
+	vertical-align: middle;
+}
+
+.preview-container {
+  margin: 0 10% 40px 10%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.preview-logo-image {
+  width: auto;
+  max-width: 100%;
+  margin: 0 20px;
+  padding: 20px;
+  box-sizing: border-box;
+  &[src$=".svg"] {
+    width: 400px;
+  }
+}
+.preview-color {
+  display: flex;
+  padding: 0 20px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.preview-color-color {
+  margin: 10px 20px;
+  display: block;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+}
+
+.api-results {
+  margin: 0 10%;
+
+  .api-result {
+    > .content {
+
+      display: flex;
+      flex-wrap: wrap;
+      padding-bottom: 20px;
+      >  *  {
+        flex: 0 0 50%;
+      }
+    }
+  }
+}
