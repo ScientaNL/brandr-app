@@ -44,7 +44,7 @@ import {BRANDrApiUrl} from "./brandr/brandr-api.service";
 		MatTableModule
 	],
 	providers: [
-		{ provide: BRANDrApiUrl, useValue: 'http://10.10.11.233:1337' }
+		{ provide: BRANDrApiUrl, useValue: 'http://10.10.11.234:4201' }
 	],
 	bootstrap: [AppComponent]
 })

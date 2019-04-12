@@ -8,7 +8,7 @@
 
   </form>
 
-  <ng-container *ngIf="BRANDr.lastResult | async as result">
+  <ng-container *ngIf="BRANDr.lastSimpleData | async as result">
 
     <div class="preview-container">
 
@@ -33,15 +33,19 @@
 
     </div>
 
+  </ng-container>
+
+
+  <ng-container *ngIf="BRANDr.lastCompleteData | async as result">
 
     <div class="api-results">
 
       <mat-divider></mat-divider>
 
       <div class="api-result">
-        <h2 class="title">extractions.logo.guesses</h2>
-        <div class="content" *ngIf="result.raw.extractions.logo.guesses.length; else: noResult">
-          <ng-container *ngFor="let logo of result.raw.extractions.logo.guesses;">
+        <h2 class="title">Logo guesses</h2>
+        <div class="content" *ngIf="result.guesses as logo; else: noResult">
+          <ng-container *ngFor="let logo of result.logos;">
             <div class="preview"><img [src]="logo" [alt]="logo" /></div>
             <div class="value">{{logo}}</div>
           </ng-container>
@@ -51,9 +55,9 @@
       <mat-divider></mat-divider>
 
       <div class="api-result">
-        <h2 class="title">extractions.logo.dom-logo</h2>
-        <div class="content" *ngIf="result.raw.extractions.logo['dom-logo'] as logo; else: noResult">
-          <div class="preview"><img [src]="logo" [alt]="logo" /></div>
+        <h2 class="title">Dom logo</h2>
+        <div class="content" *ngIf="result.domLogo as logo; else: noResult">
+          <div class="preview"><img class="preview-logo" [src]="logo" [alt]="logo" /></div>
           <div class="value">{{logo}}</div>
         </div>
       </div>
@@ -61,9 +65,9 @@
       <mat-divider></mat-divider>
 
       <div class="api-result">
-        <h2 class="title">extractions.logo.meta-logo</h2>
-        <div class="content" *ngIf="result.raw.extractions.logo['meta-logo'] as logo; else: noResult">
-          <div class="preview"><img [src]="logo" [alt]="logo" /></div>
+        <h2 class="title">Meta logo</h2>
+        <div class="content" *ngIf="result['meta-logo'] as logo; else: noResult">
+          <div class="preview"><img class="preview-logo" [src]="logo" [alt]="logo" /></div>
           <div class="value">{{logo}}</div>
         </div>
       </div>
@@ -72,9 +76,9 @@
 
 
       <div class="api-result">
-        <h2 class="title">extractions.logo.social-logo</h2>
-        <div class="content" *ngIf="result.raw.extractions.logo['social-logo'] as logo; else: noResult">
-          <div class="preview"><img [src]="logo" [alt]="logo" /></div>
+        <h2 class="title">Social logo</h2>
+        <div class="content" *ngIf="result['social-logo'] as logo; else: noResult">
+          <div class="preview"><img class="preview-logo" [src]="logo" [alt]="logo" /></div>
           <div class="value">{{logo}}</div>
         </div>
       </div>
@@ -82,9 +86,9 @@
       <mat-divider></mat-divider>
 
       <div class="api-result">
-        <h2 class="title">extractions.color.colors</h2>
-        <div class="content" *ngIf="result.raw.extractions.color.colors.length > 0; else: noResult">
-          <ng-container *ngFor="let color of result.raw.extractions.color.colors">
+        <h2 class="title">Colors</h2>
+        <div class="content" *ngIf="result.colors.length; else: noResult">
+          <ng-container *ngFor="let color of result.colors">
             <div class="preview"><div class="preview-color-color" [style.backgroundColor]="color"></div></div>
             <div class="value">{{color}}</div>
           </ng-container>
@@ -94,9 +98,9 @@
       <mat-divider></mat-divider>
 
       <div class="api-result">
-        <h2 class="title">extractions.color.grays</h2>
-        <div class="content" *ngIf="result.raw.extractions.color.grays.length > 0; else: noResult">
-          <ng-container *ngFor="let color of result.raw.extractions.color.grays">
+        <h2 class="title">Grays</h2>
+        <div class="content" *ngIf="result.grays.length; else: noResult">
+          <ng-container *ngFor="let color of result.grays">
             <div class="preview"><div class="preview-color-color" [style.backgroundColor]="color"></div></div>
             <div class="value">{{color}}</div>
           </ng-container>

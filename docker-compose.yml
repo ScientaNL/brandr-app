@@ -1,0 +1,15 @@
+version: '3.2'
+services:
+
+  brandr-app:
+    container_name: brandr-app
+    image: scienta/brandr-app:branch-master
+    ports:
+      - "10.10.11.234:4200:80"
+  brandr-api:
+    container_name: brandr-api
+    image: scienta/brandr-api:branch-master
+    environment:
+      - APP_HOST=http://10.10.11.234:4201
+    ports:
+      - "10.10.11.234:4201:3000"
