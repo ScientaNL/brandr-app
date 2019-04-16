@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
-import {BRANDrApiService} from "../brandr/brandr-api.service";
+import {BRANDrApiService} from '../brandr/brandr-api.service';
 
 @Component({
   selector: 'app-page-home',
@@ -9,7 +9,8 @@ import {BRANDrApiService} from "../brandr/brandr-api.service";
 })
 export class PageHomeComponent implements OnInit {
 
-  constructor(public BRANDr: BRANDrApiService) { }
+  constructor(public BRANDr: BRANDrApiService) {
+  }
 
   ngOnInit() {
   }

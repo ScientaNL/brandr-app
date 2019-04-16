@@ -1,118 +1,111 @@
 <div class="jumbotron">
-  <form (ngSubmit)="BRANDr.fetch(url)">
+  <h1>BRANDr is an API which retrieves the logos and branding colors of a website.</h1>
 
+  <form (ngSubmit)="BRANDr.fetch(url)">
     <mat-form-field color="accent" class="search">
-      <input name="url" type="text" [(ngModel)]="url" matNativeControl placeholder="Try BRANDr - Insert URL"/>
+      <input name="url" type="text" [(ngModel)]="url" matNativeControl placeholder="Try BRANDr - Insert a URL"/>
       <button mat-icon-button matSuffix color="accent"><img src="assets/brandr-logo-small-pink.svg"/></button>
     </mat-form-field>
-
   </form>
 
-  <ng-container *ngIf="BRANDr.lastSimpleData | async as result">
+  <mat-spinner *ngIf="(BRANDr.state | async) === 'loading'" strokeWidth="2"></mat-spinner>
 
-    <div class="preview-container">
+  <ng-container *ngIf="(BRANDr.state | async) === 'loaded'">
+    <ng-container *ngIf="BRANDr.lastSimpleData | async as result">
+      <div class="preview-container">
+        <app-logo-image *ngIf="result.logo" [logo]="result.logo"></app-logo-image>
 
-      <div class="preview-logo" *ngIf="result.logo">
-        <img [src]="result.logo" class="preview-logo-image" alt="logo"/>
+        <ng-container *ngIf="result.colors[0]">
+          <app-style-color [color]="result.colors[0]" title="Primary Color"></app-style-color>
+        </ng-container>
+
+        <ng-container *ngIf="result.colors[1]">
+          <app-style-color [color]="result.colors[1]" title="Accent Color"></app-style-color>
+        </ng-container>
+
+        <ng-container *ngIf="result.grays[0]">
+          <app-style-color [color]="result.grays[0]" title="Text Color"></app-style-color>
+        </ng-container>
       </div>
+    </ng-container>
 
-      <div class="preview-color" *ngIf="result.colors[0]">
-        <span class="preview-color-color" [style.backgroundColor]="result.colors[0]"></span>
-        <h3>primary color</h3>
+    <ng-container *ngIf="BRANDr.lastCompleteData | async as result">
+      <div class="api-results">
+
+        <mat-divider></mat-divider>
+
+        <div class="api-result">
+          <h2 class="title">Logo guesses</h2>
+          <div class="content" *ngIf="result.guesses as logos; else: noResult">
+            <app-logo-image *ngFor="let logo of logos" [logo]="logo"></app-logo-image>
+          </div>
+        </div>
+
+        <mat-divider></mat-divider>
+
+        <div class="api-result">
+          <h2 class="title">DOM logo</h2>
+          <div class="content" *ngIf="result.domLogo as logo; else: noResult">
+            <app-logo-image [logo]="logo"></app-logo-image>
+          </div>
+        </div>
+
+        <mat-divider></mat-divider>
+
+        <div class="api-result">
+          <h2 class="title">Meta logo</h2>
+          <div class="content" *ngIf="result.metaLogo as logo; else: noResult">
+            <app-logo-image [logo]="logo"></app-logo-image>
+          </div>
+        </div>
+
+        <mat-divider></mat-divider>
+
+        <div class="api-result">
+          <h2 class="title">Social logo</h2>
+          <div class="content" *ngIf="result.socialLogo as logo; else: noResult">
+            <app-logo-image [logo]="logo"></app-logo-image>
+          </div>
+        </div>
+
+        <mat-divider></mat-divider>
+
+        <div class="api-result">
+          <h2 class="title">Colors</h2>
+          <div class="content" *ngIf="result.colors.length; else: noResult">
+            <app-style-color *ngFor="let color of result.colors"
+              [color]="color"
+              [title]="color"
+              [horizontal]="true"
+            ></app-style-color>
+          </div>
+        </div>
+
+        <mat-divider></mat-divider>
+
+        <div class="api-result">
+          <h2 class="title">Grays</h2>
+          <div class="content" *ngIf="result.grays.length; else: noResult">
+            <app-style-color *ngFor="let color of result.grays"
+              [color]="color"
+              [title]="color"
+              [horizontal]="true"
+            ></app-style-color>
+          </div>
+        </div>
+
+
       </div>
-
-      <div class="preview-color" *ngIf="result.colors[1]">
-        <span class="preview-color-color" [style.backgroundColor]="result.colors[1]"></span>
-        <h3>accent color</h3>
-      </div>
-
-      <div class="preview-color" *ngIf="result.grays[0]">
-        <span class="preview-color-color" [style.backgroundColor]="result.grays[1]"></span>
-        <h3>text color</h3>
-      </div>
-
-    </div>
-
+    </ng-container>
   </ng-container>
 
-
-  <ng-container *ngIf="BRANDr.lastCompleteData | async as result">
-
-    <div class="api-results">
-
-      <mat-divider></mat-divider>
-
-      <div class="api-result">
-        <h2 class="title">Logo guesses</h2>
-        <div class="content" *ngIf="result.guesses as logo; else: noResult">
-          <ng-container *ngFor="let logo of result.logos;">
-            <div class="preview"><img [src]="logo" [alt]="logo" /></div>
-            <div class="value">{{logo}}</div>
-          </ng-container>
-        </div>
-      </div>
-
-      <mat-divider></mat-divider>
-
-      <div class="api-result">
-        <h2 class="title">Dom logo</h2>
-        <div class="content" *ngIf="result.domLogo as logo; else: noResult">
-          <div class="preview"><img class="preview-logo" [src]="logo" [alt]="logo" /></div>
-          <div class="value">{{logo}}</div>
-        </div>
-      </div>
-
-      <mat-divider></mat-divider>
-
-      <div class="api-result">
-        <h2 class="title">Meta logo</h2>
-        <div class="content" *ngIf="result['meta-logo'] as logo; else: noResult">
-          <div class="preview"><img class="preview-logo" [src]="logo" [alt]="logo" /></div>
-          <div class="value">{{logo}}</div>
-        </div>
-      </div>
-
-      <mat-divider></mat-divider>
-
-
-      <div class="api-result">
-        <h2 class="title">Social logo</h2>
-        <div class="content" *ngIf="result['social-logo'] as logo; else: noResult">
-          <div class="preview"><img class="preview-logo" [src]="logo" [alt]="logo" /></div>
-          <div class="value">{{logo}}</div>
-        </div>
-      </div>
-
-      <mat-divider></mat-divider>
-
-      <div class="api-result">
-        <h2 class="title">Colors</h2>
-        <div class="content" *ngIf="result.colors.length; else: noResult">
-          <ng-container *ngFor="let color of result.colors">
-            <div class="preview"><div class="preview-color-color" [style.backgroundColor]="color"></div></div>
-            <div class="value">{{color}}</div>
-          </ng-container>
-        </div>
-      </div>
-
-      <mat-divider></mat-divider>
-
-      <div class="api-result">
-        <h2 class="title">Grays</h2>
-        <div class="content" *ngIf="result.grays.length; else: noResult">
-          <ng-container *ngFor="let color of result.grays">
-            <div class="preview"><div class="preview-color-color" [style.backgroundColor]="color"></div></div>
-            <div class="value">{{color}}</div>
-          </ng-container>
-        </div>
-      </div>
-
-
-    </div>
-  </ng-container>
+  <div *ngIf="(BRANDr.state | async) === 'error'" class="error-message">
+    <h2>Whoops, something went wrong</h2>
+    <h3>Are you sure you entered a correct URL?</h3>
+    <p>Sure about the URL? No downtime on the the entered website? Please consider contributing to this awesome project. Check our repository!</p>
+  </div>
 
   <ng-template #noResult>
-    <h3>no result</h3>
+    <h3>No result</h3>
   </ng-template>
-
 </div>

@@ -1,10 +1,10 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
-import {PageHomeComponent} from "./page-home/page-home.component";
-import {PageAboutComponent} from "./page-about/page-about.component";
+import {PageHomeComponent} from './page-home/page-home.component';
+import {PageApiComponent} from './page-api/page-api.component';
 
 const routes: Routes = [
-	{path: 'about', component: PageAboutComponent},
+	{path: 'api', component: PageApiComponent},
 	{path: '**', component: PageHomeComponent}
 ];
 

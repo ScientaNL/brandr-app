@@ -1,0 +1,33 @@
+:host {
+  display: block;
+  margin: 40px 10%;
+}
+
+table.api-request {
+  margin: 1em 0;
+
+  td, th {
+    padding: .25em 0;
+  }
+  th {
+    padding-right: 3em;
+    text-align: left;
+  }
+
+  tr.parameter {
+    font-style: italic;
+
+    th {
+      font-weight: normal;
+      padding-left: .5em;
+    }
+  }
+}
+
+code {
+  display: block;
+  background: rgba(0,0,0,.05);
+  padding: 1em;
+  white-space: pre;
+  line-height: 1em;
+}

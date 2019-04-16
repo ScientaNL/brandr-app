@@ -12,9 +12,10 @@ import {
 	MatFormFieldModule,
 	MatInputModule,
 	MatListModule, MatTableModule,
-	MatToolbarModule
+	MatToolbarModule,
+	MatProgressSpinnerModule
 } from "@angular/material";
-import {PageAboutComponent} from './page-about/page-about.component';
+import {PageApiComponent} from './page-api/page-api.component';
 import {FormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import {BRANDrModule} from "./brandr/brandr.module";
@@ -25,7 +26,7 @@ import {BRANDrApiUrl} from "./brandr/brandr-api.service";
 		AppComponent,
 		MenuMainComponent,
 		PageHomeComponent,
-		PageAboutComponent
+		PageApiComponent
 	],
 	imports: [
 		BRANDrModule,
@@ -41,10 +42,11 @@ import {BRANDrApiUrl} from "./brandr/brandr-api.service";
 		MatListModule,
 		MatInputModule,
 		MatCardModule,
-		MatTableModule
+		MatTableModule,
+    MatProgressSpinnerModule
 	],
 	providers: [
-		{ provide: BRANDrApiUrl, useValue: 'http://10.10.11.234:4201' }
+		{ provide: BRANDrApiUrl, useValue: 'http://10.10.11.231:1337' }
 	],
 	bootstrap: [AppComponent]
 })

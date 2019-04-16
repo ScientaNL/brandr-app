@@ -17,60 +17,78 @@ export interface BRANDrApiResult {
 }
 
 export class BRANDrApiSimpleData {
-  uri: string;
-  logo: string;
-  colors: string[];
-  grays: string[];
+  public uri: string;
+  public logo: string;
+  public colors: string[];
+  public grays: string[];
 
   constructor(apiResult: BRANDrApiResult) {
     this.uri = apiResult.uri;
     this.logo = apiResult.extractions.logo[0] || null;
-    this.colors = apiResult.extractions["site-style"][0].colors;
-    this.grays = apiResult.extractions["site-style"][0].grays;
+    this.colors = apiResult.extractions['site-style'][0].colors;
+    this.grays = apiResult.extractions['site-style'][0].grays;
   }
 }
 
 export class BRANDrApiCompleteData {
-  private domLogo: any;
-  private socialLogo: string;
-  private metaLogo: string;
+  public domLogo: any;
+  public socialLogo: string;
+  public metaLogo: string;
 
-  private guesses: string[];
-  private colors: any;
-  private grays: string[];
+  public guesses: string[];
+  public colors: any;
+  public grays: string[];
 
   constructor(apiResult: BRANDrApiResult) {
     this.guesses = apiResult.extractions.logo;
-    this.domLogo = apiResult.extractions["dom-logo"];
-    this.socialLogo = apiResult.extractions["social-logo"];
-    this.metaLogo = apiResult.extractions["meta-logo"];
-    this.colors = apiResult.extractions["site-style"][0].colors;
-    this.grays = apiResult.extractions["site-style"][0].grays;
+    this.domLogo = apiResult.extractions['dom-logo'];
+    this.socialLogo = apiResult.extractions['social-logo'];
+    this.metaLogo = apiResult.extractions['meta-logo'];
+    this.colors = apiResult.extractions['site-style'][0].colors;
+    this.grays = apiResult.extractions['site-style'][0].grays;
+
+    console.log(this);
   }
 }
 
 @Injectable()
 export class BRANDrApiService {
 
-  private lastResultSource = new ReplaySubject<BRANDrApiResult>();
+  private lastResultSource = new ReplaySubject<BRANDrApiResult>(1);
   public lastResult = this.lastResultSource.asObservable();
-  public lastCompleteData = this.lastResultSource.pipe(map((res: BRANDrApiResult) => new BRANDrApiCompleteData(res)));
-  public lastSimpleData = this.lastResultSource.pipe(map((res: BRANDrApiResult) => new BRANDrApiSimpleData(res)));
+
+  public lastCompleteData = this.lastResultSource.pipe(map((res: BRANDrApiResult) => res ? new BRANDrApiCompleteData(res) : null));
+  public lastSimpleData = this.lastResultSource.pipe(map((res: BRANDrApiResult) => res ? new BRANDrApiSimpleData(res) : null));
+
+  private stateSource = new ReplaySubject<('start' | 'loading' | 'loaded' | 'error')>();
+  public state = this.stateSource.asObservable();
 
   constructor(private http: HttpClient, @Inject(BRANDrApiUrl) private  apiUrl: string) {
     this.lastResult.subscribe((res) => console.log(res));
+    this.stateSource.next('start');
 
   }
 
   fetch(url: string): (Observable<BRANDrApiResult> | false) {
 
-    if (url.indexOf('http://') === -1 && url.indexOf('https://') == -1) {
+    if (url.indexOf('http://') === -1 && url.indexOf('https://') === -1) {
       url = `http://${url}`;
     }
 
-    let requestUrl = `${this.apiUrl}/extract/`;
-    let request = <Observable<BRANDrApiResult>>this.http.post(requestUrl, {endpoint: url});
-    request.subscribe((res: BRANDrApiResult) => this.lastResultSource.next(res));
+    this.lastResultSource.next(null);
+    this.stateSource.next('loading');
+
+    const requestUrl = `${this.apiUrl}/extract/`;
+    const request = <Observable<BRANDrApiResult>> this.http.post(requestUrl, {endpoint: url});
+
+    request.subscribe((res: BRANDrApiResult) => {
+      this.lastResultSource.next(res);
+      this.stateSource.next('loaded');
+    }, () => {
+      this.lastResultSource.next(null);
+      this.stateSource.next('error');
+    });
+
     return request;
   }
 
