@@ -45,8 +45,6 @@ export class BRANDrApiCompleteData {
         this.metaLogo = apiResult.extractions['meta-logo'];
         this.colors = apiResult.extractions['site-style'][0].colors;
         this.grays = apiResult.extractions['site-style'][0].grays;
-
-        console.log(this);
     }
 }
 
@@ -66,8 +64,6 @@ export class BRANDrApiService {
 
     constructor(private http: HttpClient, config: ConfigService) {
         this.apiUrl = config.apiEndpoint;
-
-        this.lastResult.subscribe((res) => console.log(res));
         this.stateSource.next('start');
     }
 
@@ -92,5 +88,10 @@ export class BRANDrApiService {
         });
 
         return request;
+    }
+
+    public reset() {
+        this.lastResultSource.next(null);
+        this.stateSource.next('start');
     }
 }

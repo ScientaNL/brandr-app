@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {BRANDrApiService} from '../brandr/brandr-api.service';
 
 @Component({
     selector: 'app-menu-main',
@@ -7,6 +8,6 @@ import {Component} from '@angular/core';
 })
 export class MenuMainComponent {
 
-    constructor() {
+    constructor(public BRANDr: BRANDrApiService) {
     }
 }
