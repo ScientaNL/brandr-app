@@ -34,10 +34,10 @@
 
                 <mat-divider></mat-divider>
 
-                <div class="api-result">
+                <div class="api-result" >
                     <h2 class="title">Logo guesses</h2>
-                    <div class="content" *ngIf="result.guesses as logos; else: noResult">
-                        <app-logo-image *ngFor="let logo of logos" [logo]="logo"></app-logo-image>
+                    <div class="content" *ngIf="result.guesses.length; else: noResult">
+                        <app-logo-image *ngFor="let logo of result.guesses" [logo]="logo"></app-logo-image>
                     </div>
                 </div>
 
