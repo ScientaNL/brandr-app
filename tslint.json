@@ -4,6 +4,8 @@
     "codelyzer"
   ],
   "rules": {
+    "indent": [true, "spaces", 4],
+    "no-string-literal": false,
     "array-type": false,
     "arrow-parens": false,
     "deprecation": {
@@ -42,7 +44,7 @@
     ],
     "no-empty": false,
     "no-inferrable-types": [
-      true,
+      false,
       "ignore-params"
     ],
     "no-non-null-assertion": true,

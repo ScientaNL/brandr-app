@@ -1,0 +1,14 @@
+server {
+    listen       80;
+    server_name  localhost;
+
+    location /api-endpoint {
+        add_header Content-Type application/json;
+        return 200 "\"${API_ENDPOINT}\"";
+    }
+
+    location / {
+        root   /dist;
+        try_files $uri $uri/ /index.html =404;
+    }
+}

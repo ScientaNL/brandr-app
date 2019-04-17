@@ -1,20 +1,14 @@
-import {Component, HostBinding, Input, OnInit} from '@angular/core';
+import {Component, HostBinding, Input} from '@angular/core';
 
 @Component({
-  selector: 'app-style-color',
-  templateUrl: './style-color.component.html',
-  styleUrls: ['./style-color.component.scss']
+    selector: 'app-style-color',
+    templateUrl: './style-color.component.html',
+    styleUrls: ['./style-color.component.scss']
 })
-export class StyleColorComponent implements OnInit {
+export class StyleColorComponent {
 
-  @Input() color: string;
-  @Input() title: string;
+    @Input() color: string;
+    @Input() title: string;
 
-  @HostBinding('class.horizontal') @Input() public horizontal: boolean = false;
-
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+    @HostBinding('class.horizontal') @Input() public horizontal: boolean = false;
 }

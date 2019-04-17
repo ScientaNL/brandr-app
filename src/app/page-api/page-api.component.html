@@ -2,66 +2,70 @@
 <p>The BRANDr API may be used free of charge within the bounds of fair use for non-commercial purposes. Would you like to use BRANDr in your commercial app? Check out the BRANDr API git repository and host it yourself. BRANDr is shipped in a Docker container and can be deployed anywhere.</p>
 
 <h2>API Request</h2>
-<p>Check out the API with your favorite REST request tool, such as <a href="https://www.getpostman.com/" target="_blank">Postman</a>.</p>
+<p>Check out the API with your favorite REST request tool, such as <a href="https://www.getpostman.com/"
+    target="_blank">Postman</a>.</p>
 <p>Fire a x-form-urlencoded POST request to BRANDr endpoint</p>
 
 <table class="api-request">
-  <tr>
-    <th>Endpoint</th>
-    <td>{{apiUrl}}</td>
-  </tr>
-  <tr>
-    <th>Method</th>
-    <td>POST</td>
-  </tr>
-  <tr>
-    <th>Body</th>
-    <td>x-form-urlencoded form parameters</td>
-  </tr>
-  <tr class="parameter">
-    <th>- endpoint</th>
-    <td>&lt;&lt;website URL to retrieve&gt;&gt;</td>
-  </tr>
+    <tr>
+        <th>Endpoint</th>
+        <td>{{apiUrl}}</td>
+    </tr>
+    <tr>
+        <th>Method</th>
+        <td>POST</td>
+    </tr>
+    <tr>
+        <th>Body</th>
+        <td>x-form-urlencoded form parameters</td>
+    </tr>
+    <tr class="parameter">
+        <th>- endpoint</th>
+        <td>&lt;&lt;website URL to retrieve&gt;&gt;</td>
+    </tr>
 </table>
 
 <code>
-  POST /extract/ HTTP/1.1<br/>
-  Host: &lt;&lt;BRANDr host&gt;&gt;<br/>
-  Content-Type: application/x-www-form-urlencoded<br/>
-  Accept: */*<br/>
-  accept-encoding: gzip, deflate<br/>
-  <br/>
-  endpoint=&lt;&lt;URL encoded URL to retrieve&gt;&gt;
+    POST /extract/ HTTP/1.1<br/>
+    Host: &lt;&lt;BRANDr host&gt;&gt;<br/>
+    Content-Type: application/x-www-form-urlencoded<br/>
+    Accept: */*<br/>
+    accept-encoding: gzip, deflate<br/>
+    <br/>
+    endpoint=&lt;&lt;URL encoded URL to retrieve&gt;&gt;
 </code>
 
 <h2>API Response</h2>
-<p>A response could like the result displayed below. The <em>logo</em> array contains our guess. The other  properties are the best guesses for their respective strategy.</p>
+<p>A response could like the result displayed below. The
+    <em>logo</em> array contains our guess. The other properties are the best guesses for their respective strategy.</p>
 <code>
-&#123;<br />
-&nbsp; &quot;uri&quot;: &quot;https://www.scienta.nl&quot;,<br />
-&nbsp; &quot;extractions&quot;: &#123;<br />
-&nbsp; &nbsp; &quot;logo&quot;: [<br />
-&nbsp; &nbsp; &nbsp; &quot;&lt;&lt;BRANDr host&gt;&gt;/520582509e2936254f0bb430d0da3a46.png&quot;,<br />
-&nbsp; &nbsp; &nbsp; &quot;&lt;&lt;BRANDr host&gt;&gt;/aadc84c2b34d58618564d8ab721f8f7d.jpg&quot;,<br />
-&nbsp; &nbsp; &nbsp; &quot;&lt;&lt;BRANDr host&gt;&gt;/39766a4fd1f3d8149ea1f266c8a8a996.png&quot;<br />
-&nbsp; &nbsp; ],<br />
-&nbsp; &nbsp; &quot;dom-logo&quot;: &quot;&lt;&lt;BRANDr host&gt;&gt;/520582509e2936254f0bb430d0da3a46.png&quot;,<br />
-&nbsp; &nbsp; &quot;social-logo&quot;: &quot;&lt;&lt;BRANDr host&gt;&gt;/aadc84c2b34d58618564d8ab721f8f7d.jpg&quot;,<br />
-&nbsp; &nbsp; &quot;meta-logo&quot;: &quot;&lt;&lt;BRANDr host&gt;&gt;/6816a7546d517431aa9d5894f27c0c42.png&quot;,<br />
-&nbsp; &nbsp; &quot;site-style&quot;: [<br />
-&nbsp; &nbsp; &nbsp; &#123;<br />
-&nbsp; &nbsp; &nbsp; &nbsp; &quot;colors&quot;: [<br />
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &quot;rgb(230, 81, 0)&quot;<br />
-&nbsp; &nbsp; &nbsp; &nbsp; ],<br />
-&nbsp; &nbsp; &nbsp; &nbsp; &quot;grays&quot;: [<br />
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &quot;rgb(51, 51, 51)&quot;,<br />
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &quot;rgb(0, 0, 0)&quot;<br />
-&nbsp; &nbsp; &nbsp; &nbsp; ]<br />
-&nbsp; &nbsp; &nbsp; &#125;<br />
-&nbsp; &nbsp; ]<br />
-&nbsp; &#125;<br />
-&#125;
+    &#123;<br/>
+    &nbsp; &quot;uri&quot;: &quot;https://www.scienta.nl&quot;,<br/>
+    &nbsp; &quot;extractions&quot;: &#123;<br/>
+    &nbsp; &nbsp; &quot;logo&quot;: [<br/>
+    &nbsp; &nbsp; &nbsp; &quot;&lt;&lt;BRANDr host&gt;&gt;/520582509e2936254f0bb430d0da3a46.png&quot;,<br/>
+    &nbsp; &nbsp; &nbsp; &quot;&lt;&lt;BRANDr host&gt;&gt;/aadc84c2b34d58618564d8ab721f8f7d.jpg&quot;,<br/>
+    &nbsp; &nbsp; &nbsp; &quot;&lt;&lt;BRANDr host&gt;&gt;/39766a4fd1f3d8149ea1f266c8a8a996.png&quot;<br/>
+    &nbsp; &nbsp; ],<br/>
+    &nbsp; &nbsp; &quot;dom-logo&quot;: &quot;&lt;&lt;BRANDr host&gt;&gt;/520582509e2936254f0bb430d0da3a46.png&quot;,<br/>
+    &nbsp; &nbsp; &quot;social-logo&quot;: &quot;&lt;&lt;BRANDr host&gt;&gt;/aadc84c2b34d58618564d8ab721f8f7d.jpg&quot;,<br/>
+    &nbsp; &nbsp; &quot;meta-logo&quot;: &quot;&lt;&lt;BRANDr host&gt;&gt;/6816a7546d517431aa9d5894f27c0c42.png&quot;,<br/>
+    &nbsp; &nbsp; &quot;site-style&quot;: [<br/>
+    &nbsp; &nbsp; &nbsp; &#123;<br/>
+    &nbsp; &nbsp; &nbsp; &nbsp; &quot;colors&quot;: [<br/>
+    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &quot;rgb(230, 81, 0)&quot;<br/>
+    &nbsp; &nbsp; &nbsp; &nbsp; ],<br/>
+    &nbsp; &nbsp; &nbsp; &nbsp; &quot;grays&quot;: [<br/>
+    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &quot;rgb(51, 51, 51)&quot;,<br/>
+    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &quot;rgb(0, 0, 0)&quot;<br/>
+    &nbsp; &nbsp; &nbsp; &nbsp; ]<br/>
+    &nbsp; &nbsp; &nbsp; &#125;<br/>
+    &nbsp; &nbsp; ]<br/>
+    &nbsp; &#125;<br/>
+    &#125;
 </code>
 
 <h1>Contact</h1>
-<p>Questions, suggestions, improvements? Check out our <a href="https://github.com/ScientaNL/brandr-api" target="_blank">GitHub repository.</a> Or feel fee to contact us at <a href="mailto:info@scienta.nl">info@scienta.nl.</a></p>
+<p>Questions, suggestions, improvements? Check out our <a href="https://github.com/ScientaNL/brandr-api"
+    target="_blank">GitHub repository.</a> Or feel fee to contact us at <a
+    href="mailto:info@scienta.nl">info@scienta.nl.</a></p>

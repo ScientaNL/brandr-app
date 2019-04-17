@@ -2,70 +2,70 @@
 @import '../../variables.scss';
 
 h1 {
-  text-align: center;
-  margin: 40px 10% 0 10%;
+    text-align: center;
+    margin: 40px 10% 0 10%;
 }
 
-.search{
-	font-size: 36px;
-	font-weight: 300;
-	border-color: white;
-	font-family: 'Open Sans', 'Tahoma', 'Verdana', sans-serif;
-	margin: 40px 10% 0 10%;
-	width: 80%;
+.search {
+    font-size: 36px;
+    font-weight: 300;
+    border-color: white;
+    font-family: 'Open Sans', 'Tahoma', 'Verdana', sans-serif;
+    margin: 40px 10% 0 10%;
+    width: 80%;
 }
 
 mat-spinner {
-  margin: 5% auto;
+    margin: 5% auto;
 }
 
 img {
-	vertical-align: top;
-	margin: 10px;
+    vertical-align: top;
+    margin: 10px;
 }
 
 mat-card {
-	margin: 40px 100px;
+    margin: 40px 100px;
 }
 
 app-logo-image {
-  max-width: 40vw;
+    max-width: 40vw;
 }
 
 .preview-container {
-  margin: 0 10% 40px 10%;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
+    margin: 0 10% 40px 10%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
 
-  app-style-color {
-    margin: 2em;
-  }
+    app-style-color {
+        margin: 2em;
+    }
 }
 
 .api-results {
-  margin: 0 10%;
+    margin: 0 10%;
 
-  .api-result {
-    > .content {
+    .api-result {
+        > .content {
 
-      app-logo-image {
-        margin: 1.5em 0;
-      }
+            app-logo-image {
+                margin: 1.5em 0;
+            }
 
-      app-style-color {
-        margin: 1.5em 0;
-      }
+            app-style-color {
+                margin: 1.5em 0;
+            }
+        }
     }
-  }
 }
 
 .error-message {
-  margin: 40px 10% 0 10%;
-  text-align: center;
+    margin: 40px 10% 0 10%;
+    text-align: center;
 
-  h2, h3 {
-    color: mat-color($brandr-app-accent);
-  }
+    h2, h3 {
+        color: mat-color($brandr-app-accent);
+    }
 }

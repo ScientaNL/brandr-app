@@ -1,48 +1,48 @@
 :host {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 
-  min-height: 100vh;
+    min-height: 100vh;
 }
 
 header {
-  flex: 0 0 auto;
-  background: red;
+    flex: 0 0 auto;
+    background: red;
 }
 
 .app {
-  flex: 1 1 auto;
+    flex: 1 1 auto;
 }
 
 footer {
-  flex: 0 0 auto;
+    flex: 0 0 auto;
 
-  padding: 40px 10% 40px 10%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    padding: 40px 10% 40px 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-  background: rgba(black, 0.87);
-  color: white;
-  font-size: .85em;
+    background: rgba(black, 0.87);
+    color: white;
+    font-size: .85em;
 
-  span {
-    &:before, &:after {
-      content: '\00a0';
+    span {
+        &:before, &:after {
+            content: '\00a0';
+        }
+
+        padding: 0;
     }
 
-    padding: 0;
-  }
+    img {
+        height: 1.1em;
+        vertical-align: middle;
+    }
 
-  img {
-    height: 1.1em;
-    vertical-align: middle;
-  }
-
-  abbr {
-    border-bottom: 1px dotted rgba(255,255,255,.2);
-    text-decoration: none;
-    cursor: help;
-  }
+    abbr {
+        border-bottom: 1px dotted rgba(255, 255, 255, .2);
+        text-decoration: none;
+        cursor: help;
+    }
 }

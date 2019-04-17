@@ -1,15 +1,16 @@
 version: '3.2'
 services:
-
   brandr-app:
     container_name: brandr-app
     image: scienta/brandr-app:branch-master
     ports:
-      - "10.10.11.234:4200:80"
-  brandr-api:
-    container_name: brandr-api
-    image: scienta/brandr-api:branch-master
+      - "${BIND_INTERFACE}:4200:80"
+    volumes:
+      - ./dist/brandr:/dist
     environment:
-      - APP_HOST=http://10.10.11.234:4201
-    ports:
-      - "10.10.11.234:4201:3000"
+      - API_ENDPOINT=${API_ENDPOINT}
+    command: /bin/sh -c "envsubst '$${API_ENDPOINT}' < /etc/nginx/conf.d/default.conf.template > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"
+  brandr-api:
+    volumes:
+      - ../brandr-api/app:/app
+      - ../brandr-api/app/node_modules:/app/node_modules

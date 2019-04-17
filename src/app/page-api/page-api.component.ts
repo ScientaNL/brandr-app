@@ -1,13 +1,16 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {BRANDrApiUrl} from "../brandr/brandr-api.service";
+import {ConfigService} from '../brandr/config.service';
 
 @Component({
-  selector: 'app-page-api',
-  templateUrl: './page-api.component.html',
-  styleUrls: ['./page-api.component.scss']
+    selector: 'app-page-api',
+    templateUrl: './page-api.component.html',
+    styleUrls: ['./page-api.component.scss']
 })
 export class PageApiComponent {
 
-  constructor(@Inject(BRANDrApiUrl) public apiUrl: string) {
-  }
+    public apiUrl: string;
+
+    constructor(config: ConfigService) {
+        this.apiUrl = config.apiEndpoint;
+    }
 }

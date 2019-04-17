@@ -1,18 +1,21 @@
 a.logo {
-	height: 100%;
-	display: block;
-	padding: 1rem .5em 1rem 0;
+    height: 100%;
+    display: block;
+    padding: 1rem .5em 1rem 0;
 
-	box-sizing: border-box;
-	> img { height: 100%; }
+    box-sizing: border-box;
+
+    > img {
+        height: 100%;
+    }
 }
 
 a {
-  color: white;
-  text-decoration: none;
-  margin: 0 .5em;
+    color: white;
+    text-decoration: none;
+    margin: 0 .5em;
 
-  &:hover {
-    text-decoration: underline;
-  }
+    &:hover {
+        text-decoration: underline;
+    }
 }
