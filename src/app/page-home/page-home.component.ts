@@ -10,5 +10,6 @@ import {BRANDrApiService} from '../brandr/brandr-api.service';
 export class PageHomeComponent {
 
     constructor(public BRANDr: BRANDrApiService) {
+        this.BRANDr.fetch("https://tweakers.net")
     }
 }

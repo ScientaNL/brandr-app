@@ -16,6 +16,9 @@ a {
     box-sizing: border-box;
 
     padding: 10px 10px 20px 10px;
+    text-align: center;
+    min-width: 120px;
+    min-height: 90px;
 }
 
 img {
@@ -39,4 +42,14 @@ img {
     color: white;
     border-radius: 4px;
     padding: .25rem .5rem;
+    white-space: nowrap;
+}
+
+:host.small {
+    .info {
+        bottom: .25rem;
+        left: 50%;
+        right: auto;
+        transform: translateX(-50%);
+    }
 }

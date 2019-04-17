@@ -2,12 +2,11 @@ import {
     AfterViewInit,
     ChangeDetectorRef,
     Component,
-    ElementRef,
+    ElementRef, HostBinding,
     Input,
     Renderer2,
     ViewChild
 } from '@angular/core';
-import {ReplaySubject} from 'rxjs';
 
 @Component({
     selector: 'app-logo-image',
@@ -17,15 +16,14 @@ import {ReplaySubject} from 'rxjs';
 export class LogoImageComponent implements AfterViewInit {
 
     @Input() public logo: string;
-
     @ViewChild('logoElm') public logoElmRef: ElementRef;
-
-    private logoSubject = new ReplaySubject<string>(1);
 
     public logoWidth: number = 0;
     public logoHeight: number = 0;
 
     public logoExtension: string;
+
+    @HostBinding('class.small') public isSmall: boolean = false;
 
     constructor(private changeDetectorRef: ChangeDetectorRef, private renderer: Renderer2) {
     }
@@ -41,7 +39,10 @@ export class LogoImageComponent implements AfterViewInit {
                 this.logoExtension = matches[1].toUpperCase();
             }
 
-            this.changeDetectorRef.detectChanges();
+            const imgDimensions = imgElm.getBoundingClientRect();
+            this.isSmall = (imgDimensions.width <= 50 || imgDimensions.height <= 50);
+
+            this.changeDetectorRef.markForCheck();
         });
     }
 }
