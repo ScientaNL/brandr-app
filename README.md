@@ -5,13 +5,8 @@ The `docker-compose` stack of BRANDr consists of two containers: *brandr-api* an
 
 Because you can use the API without the website, and not the other way around, the `docker-compose.yml` of the website contains the volumes of the API for development purposes. This enables a developer to deploy the website and API in one command. However, feel free to fire up the two projects separately. 
 
-Fire up the stack using docker-compose:
+Fire up the dev stack using docker-compose:
 ```bash
-docker-compose -f .\docker-compose.yml -f ..\brandr-api\docker-compose.yml up -d --force-recreate --remove-orphans
+docker-compose -f .\docker-compose.yml -f ..\brandr-api\docker-compose.yml -f .\docker-compose.dev.yml up -d --force-recreate --remove-orphans
 ```
 
-## IDE file watcher
-For PHPStorm/WebStorm:
-```
-docker exec brandr-app chmod 777 /app/$UnixSeparators($FilePathRelativeToProjectRoot$)$
-```

@@ -1,0 +1,9 @@
+version: '3.2'
+services:
+  brandr-app:
+    volumes:
+      - ./dist/brandr:/dist
+  brandr-api:
+    volumes:
+      - ../brandr-api/app:/app
+      - ../brandr-api/app/node_modules:/app/node_modules

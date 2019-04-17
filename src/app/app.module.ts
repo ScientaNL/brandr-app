@@ -23,13 +23,15 @@ import {HttpClientModule} from '@angular/common/http';
 import {BRANDrModule} from './brandr/brandr.module';
 import {ConfigService} from './brandr/config.service';
 import {configFactory} from './brandr/config.service.factory';
+import {Page404Component} from './page-404/page-404.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         MenuMainComponent,
         PageHomeComponent,
-        PageApiComponent
+        PageApiComponent,
+        Page404Component
     ],
     imports: [
         BRANDrModule,

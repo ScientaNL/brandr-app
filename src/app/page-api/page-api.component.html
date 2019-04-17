@@ -2,8 +2,7 @@
 <p>The BRANDr API may be used free of charge within the bounds of fair use for non-commercial purposes. Would you like to use BRANDr in your commercial app? Check out the BRANDr API git repository and host it yourself. BRANDr is shipped in a Docker container and can be deployed anywhere.</p>
 
 <h2>API Request</h2>
-<p>Check out the API with your favorite REST request tool, such as <a href="https://www.getpostman.com/"
-    target="_blank">Postman</a>.</p>
+<p>Check out the API with your favorite REST request tool, such as <a href="https://www.getpostman.com/" target="_blank">Postman</a>.</p>
 <p>Fire a x-form-urlencoded POST request to BRANDr endpoint</p>
 
 <table class="api-request">
@@ -27,7 +26,7 @@
 
 <code>
     POST /extract/ HTTP/1.1<br/>
-    Host: &lt;&lt;BRANDr host&gt;&gt;<br/>
+    Host: {{apiUrl}}<br/>
     Content-Type: application/x-www-form-urlencoded<br/>
     Accept: */*<br/>
     accept-encoding: gzip, deflate<br/>
@@ -43,13 +42,13 @@
     &nbsp; &quot;uri&quot;: &quot;https://www.scienta.nl&quot;,<br/>
     &nbsp; &quot;extractions&quot;: &#123;<br/>
     &nbsp; &nbsp; &quot;logo&quot;: [<br/>
-    &nbsp; &nbsp; &nbsp; &quot;&lt;&lt;BRANDr host&gt;&gt;/520582509e2936254f0bb430d0da3a46.png&quot;,<br/>
-    &nbsp; &nbsp; &nbsp; &quot;&lt;&lt;BRANDr host&gt;&gt;/aadc84c2b34d58618564d8ab721f8f7d.jpg&quot;,<br/>
-    &nbsp; &nbsp; &nbsp; &quot;&lt;&lt;BRANDr host&gt;&gt;/39766a4fd1f3d8149ea1f266c8a8a996.png&quot;<br/>
+    &nbsp; &nbsp; &nbsp; &quot;{{apiUrl}}/520582509e2936254f0bb430d0da3a46.png&quot;,<br/>
+    &nbsp; &nbsp; &nbsp; &quot;{{apiUrl}}/aadc84c2b34d58618564d8ab721f8f7d.jpg&quot;,<br/>
+    &nbsp; &nbsp; &nbsp; &quot;{{apiUrl}}/39766a4fd1f3d8149ea1f266c8a8a996.png&quot;<br/>
     &nbsp; &nbsp; ],<br/>
-    &nbsp; &nbsp; &quot;dom-logo&quot;: &quot;&lt;&lt;BRANDr host&gt;&gt;/520582509e2936254f0bb430d0da3a46.png&quot;,<br/>
-    &nbsp; &nbsp; &quot;social-logo&quot;: &quot;&lt;&lt;BRANDr host&gt;&gt;/aadc84c2b34d58618564d8ab721f8f7d.jpg&quot;,<br/>
-    &nbsp; &nbsp; &quot;meta-logo&quot;: &quot;&lt;&lt;BRANDr host&gt;&gt;/6816a7546d517431aa9d5894f27c0c42.png&quot;,<br/>
+    &nbsp; &nbsp; &quot;dom-logo&quot;: &quot;{{apiUrl}}/520582509e2936254f0bb430d0da3a46.png&quot;,<br/>
+    &nbsp; &nbsp; &quot;social-logo&quot;: &quot;{{apiUrl}}/aadc84c2b34d58618564d8ab721f8f7d.jpg&quot;,<br/>
+    &nbsp; &nbsp; &quot;meta-logo&quot;: &quot;{{apiUrl}}/6816a7546d517431aa9d5894f27c0c42.png&quot;,<br/>
     &nbsp; &nbsp; &quot;site-style&quot;: [<br/>
     &nbsp; &nbsp; &nbsp; &#123;<br/>
     &nbsp; &nbsp; &nbsp; &nbsp; &quot;colors&quot;: [<br/>

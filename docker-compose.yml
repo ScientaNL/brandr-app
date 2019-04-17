@@ -3,14 +3,9 @@ services:
   brandr-app:
     container_name: brandr-app
     image: scienta/brandr-app:branch-master
+    restart: always
     ports:
-      - "${BIND_INTERFACE}:4200:80"
-    volumes:
-      - ./dist/brandr:/dist
+      - "${BIND_INTERFACE}:8080:80"
     environment:
       - API_ENDPOINT=${API_ENDPOINT}
     command: /bin/sh -c "envsubst '$${API_ENDPOINT}' < /etc/nginx/conf.d/default.conf.template > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"
-  brandr-api:
-    volumes:
-      - ../brandr-api/app:/app
-      - ../brandr-api/app/node_modules:/app/node_modules

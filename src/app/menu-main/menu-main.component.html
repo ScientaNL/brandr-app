@@ -3,7 +3,7 @@
         <img src="assets/brandr-logo.svg" class="logo" rel="logo"/>
     </a>
 
-    <a [routerLink]="['/']">Home</a>
-    <a [routerLink]="['/api']">BRANDr API</a>
-    <a href="https://github.com/ScientaNL/brandr-api">GitHub project</a>
+    <a mat-button [routerLink]="['/']" routerLinkActive="mat-raised-button mat-accent" [routerLinkActiveOptions]="{exact: true}">Home</a>
+    <a mat-button [routerLink]="['/api']" routerLinkActive="mat-raised-button mat-accent">BRANDr API</a>
+    <a mat-button href="https://github.com/ScientaNL/brandr-api" target="_blank">GitHub project</a>
 </mat-toolbar>

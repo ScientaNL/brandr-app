@@ -1,7 +1,7 @@
 a.logo {
     height: 100%;
     display: block;
-    padding: 1rem .5em 1rem 0;
+    padding: 1rem 1em 1rem 0;
 
     box-sizing: border-box;
 
@@ -13,9 +13,4 @@ a.logo {
 a {
     color: white;
     text-decoration: none;
-    margin: 0 .5em;
-
-    &:hover {
-        text-decoration: underline;
-    }
 }
