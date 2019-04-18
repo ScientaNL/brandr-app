@@ -69,8 +69,10 @@ export class BRANDrApiService {
 
     public fetch(url: string): (Observable<BRANDrApiResult> | false) {
 
+        url = ('' + url).trim();
+
         if (url.indexOf('http://') === -1 && url.indexOf('https://') === -1) {
-            url = `http://${url}`;
+            url = `https://${url}`;
         }
 
         this.lastResultSource.next(null);
