@@ -5,4 +5,6 @@ import {Injectable} from '@angular/core';
 })
 export class ConfigService {
     public apiEndpoint: string;
+    public apiVersion: string;
+    public appVersion: string;
 }

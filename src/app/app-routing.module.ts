@@ -7,7 +7,7 @@ import {Page404Component} from './page-404/page-404.component';
 const routes: Routes = [
     {path: '', component: PageHomeComponent, runGuardsAndResolvers: 'always'},
     {path: 'api', component: PageApiComponent},
-    {path: '**', component: Page404Component}
+    {path: '**', redirectTo: ''}
 ];
 
 @NgModule({

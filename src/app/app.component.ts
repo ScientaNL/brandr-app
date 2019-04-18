@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {ConfigService} from './brandr/config.service';
 
 @Component({
     selector: 'app-root',
@@ -8,7 +9,7 @@ import {Component} from '@angular/core';
 export class AppComponent {
     public year;
 
-    constructor() {
+    constructor(public config: ConfigService) {
         this.year = (new Date()).getFullYear();
     }
 }

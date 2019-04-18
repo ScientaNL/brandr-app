@@ -7,6 +7,11 @@ server {
         return 200 "\"${API_ENDPOINT}\"";
     }
 
+    location /app-version {
+        add_header Content-Type application/json;
+        return 200 "\"${APP_VERSION}\"";
+    }
+
     location / {
         root   /dist;
         try_files $uri $uri/ /index.html =404;

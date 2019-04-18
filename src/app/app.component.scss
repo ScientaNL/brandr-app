@@ -17,11 +17,24 @@ header {
 
 footer {
     flex: 0 0 auto;
-
-    padding: 20px 10% 20px 10%;
     display: flex;
-    justify-content: center;
+
+    padding: 2em 1em;
+    justify-content: space-between;
     align-items: center;
+
+    > * {
+        flex: 0 0 33.3%;
+        text-align: center;
+
+        &:first-child {
+            text-align: left;
+        }
+
+        &:last-child {
+            text-align: right;
+        }
+    }
 
     background: rgba(black, 0.87);
     color: white;
@@ -29,14 +42,14 @@ footer {
 
     span {
         &:before, &:after {
-            content: '\00a0';
+            content: '\00a0\00a0';
         }
 
         padding: 0;
     }
 
     img {
-        height: 1.1em;
+        height: 1em;
         vertical-align: middle;
     }
 
