@@ -7,7 +7,7 @@ WORKDIR /app
 COPY . .
 
 RUN yarn && \
-    yarn run build
+    yarn run build --aot --prod
 
 FROM nginx:alpine
 
