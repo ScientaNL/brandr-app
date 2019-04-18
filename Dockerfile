@@ -11,9 +11,13 @@ RUN yarn && \
 
 FROM nginx:alpine
 
+ARG APP_VERSION
+
 RUN mkdir -p /dist
 
 COPY --from=builder /app/dist/brandr /dist
 COPY nginx.conf.template /etc/nginx/conf.d/default.conf.template
+
+RUN envsubst '$${APP_VERSION}' < /etc/nginx/conf.d/default.conf.template > /etc/nginx/conf.d/default.conf.template
 
 STOPSIGNAL SIGTERM
