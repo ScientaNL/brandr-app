@@ -29,7 +29,7 @@ pipeline:
         auto_tag: false
         tags: "${DRONE_TAG}"
         build_args:
-            - APP_VERSION=${DRONE_BRANCH}
+            - APP_VERSION=${DRONE_TAG}
         storage_path: /drone/docker-brandr-app
         secrets: [ docker_username, docker_password ]
         when:
