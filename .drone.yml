@@ -1,11 +1,4 @@
 pipeline:
-    restore-cache:
-        image: drillster/drone-volume-cache
-        restore: true
-        mount:
-            - /drone/docker-brandr-app
-        volumes:
-            - /tmp/cache:/cache
 
     build-branch:
         image: plugins/docker
@@ -16,7 +9,6 @@ pipeline:
         tags: "branch-${DRONE_BRANCH}"
         build_args:
             - APP_VERSION=${DRONE_BRANCH}-${DRONE_COMMIT_SHA:0:7}
-        storage_path: /drone/docker-brandr-app
         secrets: [ docker_username, docker_password ]
         when:
             event: [push]
@@ -30,15 +22,6 @@ pipeline:
         tags: "${DRONE_TAG}"
         build_args:
             - APP_VERSION=${DRONE_TAG}
-        storage_path: /drone/docker-brandr-app
         secrets: [ docker_username, docker_password ]
         when:
             event: [tag]
-
-    rebuild-cache:
-        image: drillster/drone-volume-cache
-        rebuild: true
-        mount:
-            - /drone/docker-ids
-        volumes:
-            - /tmp/cache:/cache
