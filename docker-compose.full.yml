@@ -2,7 +2,7 @@ version: '3.2'
 services:
   brandr-app:
     container_name: brandr-app
-    image: scienta/brandr-app:1.3.1
+    image: scienta/brandr-app:latest
     restart: always
     ports:
       - "${BIND_INTERFACE}:8080:80"
