@@ -41,7 +41,9 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           push: true
-          tags: scienta/brandr-app:${{env.GITHUB_REF_NAME_SLUG}}
+          tags: |
+            scienta/brandr-app:latest
+            scienta/brandr-app:${{env.GITHUB_REF_NAME_SLUG}}
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache
           build-args: |
